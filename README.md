@@ -1,4 +1,3 @@
-```markdown
 # Database Project
 
 ## Lab 1: Database Design
@@ -118,5 +117,3 @@ Create a nonclustered index to speed up the query. Re-examine the execution plan
 
 3. Create a view that joins at least 2 tables. Check whether existing indexes are helpful.
 If not, reassess the existing indexes or examine the cardinality of the tables.
-
----
