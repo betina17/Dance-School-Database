@@ -1,66 +1,111 @@
-Lab 1. Database Design
-•	assigned: week 1; due: week 3
-Imagine a simple application that requires a database. Represent the application data in a relational structure and implement the structure in a SQL Server database. The database must contain at least: 10 tables, two 1:n relationships, one m:n relationship.
+```markdown
+# Database Project
+
+## Lab 1: Database Design
+
+### Requirements:
+Imagine a simple application that requires a database. Represent the application data in a relational structure and implement the structure in a SQL Server database. The database must contain at least:
+- 10 tables
+- Two 1:n relationships
+- One m:n relationship
+
+---
+
+## Lab 2: SQL Queries
 
 
-Lab 2. SQL Queries
-•	assigned: week 3; due: week 6
-On the relational structure created for the first lab, write SQL statements that:
-•	insert data – for at least 4 tables; at least one statement must violate referential integrity constraints;
-•	update data – for at least 3 tables;
-•	delete data – for at least 2 tables.
-In the UPDATE / DELETE statements, use at least once: {AND, OR, NOT},  {<,<=,=,>,>=,<> }, IS [NOT] NULL, IN, BETWEEN, LIKE.
-On the same database, write the following SQL queries:
-a. 2 queries with the union operation; use UNION [ALL] and OR;
-b. 2 queries with the intersection operation; use INTERSECT and IN;
-c. 2 queries with the difference operation; use EXCEPT and NOT IN;
-d. 4 queries with INNER JOIN, LEFT JOIN, RIGHT JOIN, and FULL JOIN (one query per operator); one query will join at least 3 tables, while another one will join at least two many-to-many relationships;
-e. 2 queries with the IN operator and a subquery in the WHERE clause; in at least one case, the subquery must include a subquery in its own WHERE clause;
-f. 2 queries with the EXISTS operator and a subquery in the WHERE clause;
-g. 2 queries with a subquery in the FROM clause;                         
-h. 4 queries with the GROUP BY clause, 3 of which also contain the HAVING clause; 2 of the latter will also have a subquery in the HAVING clause; use the aggregation operators: COUNT, SUM, AVG, MIN, MAX;
-i. 4 queries using ANY and ALL to introduce a subquery in the WHERE clause (2 queries per operator); rewrite 2 of them with aggregation operators, and the other 2 with IN / [NOT] IN.
-You must use:
-•	arithmetic expressions in the SELECT clause in at least 3 queries;
-•	conditions with AND, OR, NOT, and parentheses in the WHERE clause in at least 3 queries;
-•	DISTINCT in at least 3 queries, ORDER BY in at least 2 queries, and TOP in at least 2 queries.
-Obs.
-You can use views in at most 3 queries.
-You can change the relational structure created for the first lab.
-Your queries must be relevant to the problem domain.
+### Tasks:
+On the relational structure created for Lab 1, write SQL statements that:
+
+- **Insert Data**: Insert data into at least 4 tables. At least one statement must violate referential integrity constraints.
+- **Update Data**: Update data for at least 3 tables.
+- **Delete Data**: Delete data from at least 2 tables.
+
+In the `UPDATE` and `DELETE` statements, use the following:
+- Logical operators: `{AND, OR, NOT}`
+- Comparison operators: `{<, <=, =, >, >=, <>}`
+- `IS [NOT] NULL`, `IN`, `BETWEEN`, and `LIKE`
+
+### SQL Queries:
+1. **Set Operations**:  
+   - 2 queries with the `UNION` operation; use `UNION [ALL]` and `OR`
+   - 2 queries with the `INTERSECT` operation; use `INTERSECT` and `IN`
+   - 2 queries with the `EXCEPT` operation; use `EXCEPT` and `NOT IN`
+   
+2. **Join Operations**:  
+   - 1 query with `INNER JOIN`
+   - 1 query with `LEFT JOIN`
+   - 1 query with `RIGHT JOIN`
+   - 1 query with `FULL JOIN`
+   - One query will join at least 3 tables, while another will join at least two many-to-many relationships
+
+3. **Subqueries**:  
+   - 2 queries with the `IN` operator and a subquery in the `WHERE` clause (in at least one case, the subquery must include a subquery in its own `WHERE` clause)
+   - 2 queries with the `EXISTS` operator and a subquery in the `WHERE` clause
+   - 2 queries with a subquery in the `FROM` clause
+
+4. **Aggregation and Grouping**:  
+   - 4 queries with the `GROUP BY` clause
+   - 3 of these queries must also contain the `HAVING` clause
+   - 2 of the latter must also have a subquery in the `HAVING` clause
+   - Use aggregation operators: `COUNT`, `SUM`, `AVG`, `MIN`, `MAX`
+
+5. **Special Operators**:  
+   - 4 queries using `ANY` and `ALL` to introduce a subquery in the `WHERE` clause (2 queries per operator)
+   - Rewrite 2 of these with aggregation operators and the other 2 with `IN`/`[NOT] IN`
+
+### Additional Requirements:
+- Use arithmetic expressions in the `SELECT` clause in at least 3 queries
+- Use `AND`, `OR`, `NOT`, and parentheses in the `WHERE` clause in at least 3 queries
+- Use `DISTINCT` in at least 3 queries, `ORDER BY` in at least 2 queries, and `TOP` in at least 2 queries
+- You can use views in at most 3 queries
+- You can change the relational structure created in Lab 1
+- Your queries must be relevant to the problem domain
+
+---
+
+## Lab 3: Altering the Database
 
 
+### Tasks:
+Sometimes, after you design a database, you need to change its structure. Unfortunately, changes aren’t always correct, so they must be reverted. Your task is to create a versioning mechanism that allows you to easily switch between database versions.
 
-Lab 3. Altering the Database
-•	assigned: week 6; due: week 8
-Sometimes, after you design a database, you need to change its structure. Unfortunately, changes aren’t correct every time, so they must be reverted. Your task is to create a versioning mechanism that allows you to easily switch between database versions.
 Write SQL scripts that:
-a. modify the type of a column;
-b. add / remove a column;
-c. add / remove a DEFAULT constraint;
-d. add / remove a primary key;
-e. add / remove a candidate key;
-f. add / remove a foreign key;
-g. create / drop a table.
-For each of the scripts above, write another one that reverts the operation. Place each script in a stored procedure. Use a simple, intuitive naming convention.
-Create a new table that holds the current version of the database schema. Simplifying assumption: the version is an integer number.
-Write a stored procedure that receives as a parameter a version number and brings the database to that version.
+- **Modify the type of a column**
+- **Add/Remove a column**
+- **Add/Remove a `DEFAULT` constraint**
+- **Add/Remove a primary key**
+- **Add/Remove a candidate key**
+- **Add/Remove a foreign key**
+- **Create/Drop a table**
+
+For each of the scripts above, write another one that reverts the operation. Place each script in a stored procedure and use a simple, intuitive naming convention.
+
+### Version Control:
+Create a new table that holds the current version of the database schema. The version is an integer number. Write a stored procedure that receives a version number as a parameter and brings the database to that version.
+
+---
+
+## Lab 4: Indexes
 
 
+### Tasks:
+Work on 3 tables of the form `Ta(aid, a2, …)`, `Tb(bid, b2, …)`, `Tc(cid, aid, bid, …)`, where:
+- `aid`, `bid`, `cid`, `a2`, `b2` are integers
+- The primary keys are underlined
+- `a2` is `UNIQUE` in `Ta`
+- `aid` and `bid` are foreign keys in `Tc`, referencing the primary keys in `Ta` and `Tb`, respectively
 
-Lab 5. Indexes
-•	assigned: week 11; due: week 12
-Work on 3 tables of the form Ta(aid, a2, …), Tb(bid, b2, …), Tc(cid, aid, bid, …), where:
-•	aid, bid, cid, a2, b2 are integers;
-•	the primary keys are underlined;
-•	a2 is UNIQUE in Ta;
-•	aid and bid are foreign keys in Tc, referencing the primary keys in Ta and Tb, respectively.
-a. Write queries on Ta such that their execution plans contain the following operators:
-•	clustered index scan;
-•	clustered index seek;
-•	nonclustered index scan;
-•	nonclustered index seek;
-•	key lookup.
-b. Write a query on table Tb with a WHERE clause of the form WHERE b2 = value and analyze its execution plan. Create a nonclustered index that can speed up the query. Examine the execution plan again.
-c. Create a view that joins at least 2 tables. Check whether existing indexes are helpful; if not, reassess existing indexes / examine the cardinality of the tables.
+### Index Queries:
+1. Write queries on `Ta` such that their execution plans contain the following operators:
+   - Clustered index scan
+   - Clustered index seek
+   - Nonclustered index scan
+   - Nonclustered index seek
+   - Key lookup
 
+2. Write a query on `Tb` with a `WHERE` clause of the form `WHERE b2 = value` and analyze its execution plan. Create a nonclustered index to speed up the query. Re-examine the execution plan.
+
+3. Create a view that joins at least 2 tables. Check whether existing indexes are helpful. If not, reassess the existing indexes or examine the cardinality of the tables.
+
+---
